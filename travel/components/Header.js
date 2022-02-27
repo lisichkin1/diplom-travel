@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import logoPic from '../image/travel.png'
-import { SearchIcon } from '@heroicons/react/solid'
+import { SearchIcon, GlobeAltIcon, MenuIcon, UserCircleIcon } from '@heroicons/react/solid'
 function Header() {
   return (
     <header className='sticky top-0 z-50 
@@ -23,7 +23,7 @@ function Header() {
       items-center md:border-2 
       rounded-full py-2
       md:shadow-md'>
-        <input className='pl-5 flex-grow 
+        <input className='mm:pl-5 flex-grow 
         bg-transparent outline-none
         text-base text-gray-600 placeholder-gray-400' 
         type="text" placeholder='Начни свой поиск...'/>
@@ -34,7 +34,16 @@ function Header() {
       {/* right */}
 
       <div>
-
+        <div className='flex items-center space-x-4 
+          justify-end text-gray-600'>
+          <p className='hidden md:inline text-center'>Станьте хозяином</p>
+          <GlobeAltIcon className='hidden mm:inline h-6 cursor-pointer'/>
+          <div className='flex items-center space-x-2 
+          border-2 rounded-full p-2'>
+          <MenuIcon className='h-6 cursor-pointer'/>
+          <UserCircleIcon className='h-6 cursor-pointer'/>
+        </div>
+      </div>
       </div>
     </header>
     
