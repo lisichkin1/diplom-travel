@@ -1,5 +1,5 @@
 module.exports = {
     images:{
-        domains: ['img.favpng.com']
-    }
+        domains: ['a0.muscache.com'],
+    },
 }
