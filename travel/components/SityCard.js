@@ -20,7 +20,5 @@ function SityCard({img, location, distance}) {
     </div>
   )
 }
-//http://localhost:3000/search?location=Саратов&startDate=2022-03-11T22%3A54%3A23.741Z&endDate=2022-03-11T22%3A54%3A23.741Z&quantityOfGuest=1
-//http://localhost:3000/search/search?location=Саратов&startDate=2022-03-11T22%3A48%3A44.217Z&endDate=2022-03-11T22%3A48%3A44.217Z&quantityOfGuest=1
 
 export default SityCard
