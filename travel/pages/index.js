@@ -65,8 +65,9 @@ export default function Home({exploreData, sliderData}){
   )
 }
 
+
 export async function getStaticProps() {
-  const exploreData = await fetch("https://jsonkeeper.com/b/ETML").
+  const exploreData = await fetch("https://jsonkeeper.com/b/IG4Q").
   then(
     (res) => res.json()
     );
