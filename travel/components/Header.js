@@ -12,7 +12,7 @@ function Header() {
   const [searchInput, setSerachInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [quantityOfGuet, setQuantityOfGuet] = useState(1);
+  const [quantityOfGuest, setQuantityOfGuest] = useState(1);
 
   const dateSelect = (ranges) =>{
     setStartDate(ranges.Selection.startDate);
@@ -23,6 +23,10 @@ function Header() {
     endDate: endDate,
     key: 'Selection'
   }
+
+  const resetSearch = () =>{
+    setSerachInput("");
+  };
   //moment.locale('ru');
   return (
     <header className='sticky top-0 z-50 
@@ -83,10 +87,23 @@ function Header() {
               Количество гостей
             </h2>
             <UserIcon className='h-5'/>
-            <input type='number' 
+            <input 
+            type='number' 
             className='w-12 pl-2 text-lg 
             outline-none text-blue-500'
-            value={quantityOfGuet}></input>
+            value={quantityOfGuest}
+            onChange={(e) => setQuantityOfGuest(e.target.value)}
+            min={1}
+            >
+            </input>
+          </div>
+          <div className='flex'>
+            <button onClick={resetSearch} className='flex-grow text-gray-600'>
+              Отменить
+            </button>
+            <button className='flex-grow text-blue-400'>
+              Искать
+            </button>
           </div>
         </div>
       )
