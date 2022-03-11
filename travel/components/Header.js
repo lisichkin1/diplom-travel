@@ -7,12 +7,14 @@ import 'react-date-range/dist/theme/default.css';
 import { DateRange } from 'react-date-range';
 import * as rdrLocales from 'react-date-range/dist/locale';
 import moment from 'moment';
+import { useRouter } from 'next/router';
 
 function Header() {
   const [searchInput, setSerachInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [quantityOfGuest, setQuantityOfGuest] = useState(1);
+  const router = useRouter();
 
   const dateSelect = (ranges) =>{
     setStartDate(ranges.Selection.startDate);
@@ -22,6 +24,18 @@ function Header() {
     startDate: startDate,
     endDate: endDate,
     key: 'Selection'
+  }
+
+  const search =()=>{
+    router.push({
+      pathname:'/search',
+      query:{
+        location:searchInput,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        quantityOfGuest,
+      }
+    })
   }
 
   const resetSearch = () =>{
@@ -34,7 +48,7 @@ function Header() {
     bg-white shadow-md
      py-5 px-5 md:px-10'>
       {/* left */}
-      <div className='relative flex items-center h-12 cursor-pointer my-auto'>
+      <div onClick={() => router.push('/')} className='relative flex items-center h-12 cursor-pointer my-auto'>
       <Image src={logoPic} 
       width='80'
       height='80' 
@@ -101,7 +115,7 @@ function Header() {
             <button onClick={resetSearch} className='flex-grow text-gray-600'>
               Отменить
             </button>
-            <button className='flex-grow text-blue-400'>
+            <button onClick={search} className='flex-grow text-blue-400'>
               Искать
             </button>
           </div>
