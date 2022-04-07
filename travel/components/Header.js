@@ -69,7 +69,7 @@ function Header({placeholder}) {
         className='mm:pl-5 flex-grow 
         bg-transparent outline-none
         text-base text-gray-600 placeholder-gray-400' 
-        type="text" placeholder='Начни свой поиск...'/>
+        type="text" placeholder={placeholder || 'Начни свой поиск...'}/>
         <SearchIcon className='h-8 bg-blue-400 text-white 
         p-2 rounded-full cursor-pointer hidden md:inline-flex md:mx-3'/>
       </div>

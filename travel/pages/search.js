@@ -5,8 +5,10 @@ import {format} from 'date-fns'
 import { formatDistance } from 'date-fns'
 // Require Esperanto locale
 import { ru } from 'date-fns/locale'
-function Search() {
+import InfoCard from '../components/InfoCard';
+function Search({ResaultSearch}) {
   const router = useRouter();
+  console.log(ResaultSearch)
   
   const{location, startDate, endDate, quantityOfGuest} = router.query
   const normalizeStartDate = format(new Date(startDate), 'dd MMMM yy', {locale: ru});
@@ -15,10 +17,10 @@ function Search() {
 
   return (
     <div>
-      <Header placeholder={``}/>
+      <Header placeholder={`${location} | ${range} | ${quantityOfGuest} гостей`}/>
       <main className='flex'>
         <sectionc className='flex-grow pt-16 px-6'>
-          <p className='text-sm'>30 вариантов мест - {range} для {quantityOfGuest} гостей</p>
+          <p className='text-sm'>30 вариантов мест - {range} для {quantityOfGuest} гостя(ей)</p>
           <h1 className='text-2xl font-semibold mt-2 mb-6'>
             Жильё {location}
           </h1>
@@ -32,6 +34,21 @@ function Search() {
             <p className='button'>Камин</p>
             <p className='button'>Wi-Fi</p>
           </div>
+
+          <div className='flex flex-col'>
+          {ResaultSearch.map(({img, location, title, description, star, price, total}) =>(
+            <InfoCard
+            key={img}
+            img={img}
+            location={location}
+            title={title}
+            description={description}
+            star={star}
+            price={price}
+            total={total}
+            />
+          ))}
+          </div>
         </sectionc>
       </main>
     </div>
@@ -39,3 +56,14 @@ function Search() {
 }
 
 export default Search
+
+export async function getServerSideProps(){
+  const ResaultSearch = await fetch("https://api.jsonbin.io/b/624f049c7b69e806cf4a3333")
+  .then((res) => res.json());
+  
+  return{
+    props:{
+      ResaultSearch,
+    },
+  };
+}

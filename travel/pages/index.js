@@ -11,8 +11,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
 export default function Home({exploreData, sliderData}){
+  console.log(exploreData)
   return (
-    
     <div className="">
       <Head>
         <title>Create Next App</title>
