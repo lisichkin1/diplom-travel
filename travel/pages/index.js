@@ -5,7 +5,7 @@ import Header from "../components/Header"
 import Banner from "../components/Banner"
 import SliderCard from"../components/SliderCard"
 import SityCard from"../components/SityCard"
-
+import XMLHttpRequest from 'xhr2';
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
@@ -65,12 +65,13 @@ export default function Home({exploreData, sliderData}){
   )
 }
 
-
+//https://jsonkeeper.com/b/IG4Q
 export async function getStaticProps() {
-  const exploreData = await fetch("https://jsonkeeper.com/b/IG4Q").
+  const exploreData = await fetch("https://api.jsonbin.io/b/622db7ed7caf5d6783678e59").
   then(
     (res) => res.json()
     );
+    console.log(exploreData)
   
   const sliderData = await fetch("https://jsonkeeper.com/b/G0PD").
   then(
