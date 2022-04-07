@@ -2,21 +2,23 @@ import React from 'react'
 import Header from '../components/Header'
 import { useRouter } from 'next/router';
 import {format} from 'date-fns' 
-
+import { formatDistance } from 'date-fns'
+// Require Esperanto locale
+import { ru } from 'date-fns/locale'
 function Search() {
   const router = useRouter();
   
   const{location, startDate, endDate, quantityOfGuest} = router.query
-  const normalizeStartDate = format(new Date(startDate), 'dd MMMM yy')
-  const normalizeEndDate = format(new Date(endDate), 'dd MMMM yy')
+  const normalizeStartDate = format(new Date(startDate), 'dd MMMM yy', {locale: ru});
+  const normalizeEndDate = format(new Date(endDate), 'dd MMMM yy', {locale: ru});
+  const range = `${normalizeStartDate} - ${normalizeEndDate}`;
 
   return (
     <div>
-      <Header/>
+      <Header placeholder={``}/>
       <main className='flex'>
         <sectionc className='flex-grow pt-16 px-6'>
-          <p className='text-sm'>30 вариантов для {quantityOfGuest} гостей 
-          c {normalizeStartDate} по {normalizeEndDate}</p>
+          <p className='text-sm'>30 вариантов мест - {range} для {quantityOfGuest} гостей</p>
           <h1 className='text-2xl font-semibold mt-2 mb-6'>
             Жильё {location}
           </h1>

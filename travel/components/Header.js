@@ -9,7 +9,8 @@ import * as rdrLocales from 'react-date-range/dist/locale';
 import moment from 'moment';
 import { useRouter } from 'next/router';
 
-function Header() {
+
+function Header({placeholder}) {
   const [searchInput, setSerachInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -95,6 +96,7 @@ function Header() {
           ranges = {[selectionRange]}
           minDate = {new Date()}
           onChange={dateSelect}
+          
           />
           <div className='flex items-center border-b-2 border-blue-400 mb-4'>
             <h2 className='text-xl flex-grow font-semibold text-gray-600'>
