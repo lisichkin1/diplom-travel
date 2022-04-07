@@ -20,5 +20,5 @@ function SityCard({img, location, distance}) {
     </div>
   )
 }
-
+//end
 export default SityCard
