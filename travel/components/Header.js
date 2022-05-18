@@ -10,6 +10,7 @@ import moment from 'moment';
 import { useRouter } from 'next/router';
 
 
+
 function Header({placeholder}) {
   const [searchInput, setSerachInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
@@ -17,6 +18,8 @@ function Header({placeholder}) {
   const [quantityOfGuest, setQuantityOfGuest] = useState(1);
   const router = useRouter();
 
+  //console.log(searchInput)
+  
   const dateSelect = (ranges) =>{
     setStartDate(ranges.Selection.startDate);
     setEndDate(ranges.Selection.endDate);
@@ -58,7 +61,6 @@ function Header({placeholder}) {
       />
       </div>
       {/* middle */}
-
       <div className='flex 
       items-center md:border-2 
       rounded-full py-2
@@ -69,7 +71,8 @@ function Header({placeholder}) {
         className='mm:pl-5 flex-grow 
         bg-transparent outline-none
         text-base text-gray-600 placeholder-gray-400' 
-        type="text" placeholder={placeholder || 'Начни свой поиск...'}/>
+        type="text" 
+        placeholder={placeholder || 'Начни свой поиск...'}/>
         <SearchIcon className='h-8 bg-blue-400 text-white 
         p-2 rounded-full cursor-pointer hidden md:inline-flex md:mx-3'/>
       </div>

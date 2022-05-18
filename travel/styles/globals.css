@@ -8,5 +8,12 @@
         cursor-pointer hover:shadow-2xl active:scale-95
         active:bg-gray-200 transition transform 
         duration-100 ease-out
+    };
+    .modal{
+        @apply h-screen w-screen bg-[rgba(0,0,0,0.4)] 
+        fixed top-0 left-0 flex items-center justify-center scale-0 transition duration-300 ease-out scale-0
+    };
+    .modal.active{
+        @apply scale-100
     }
 }
