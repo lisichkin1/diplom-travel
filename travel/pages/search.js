@@ -36,7 +36,6 @@ function Search({ResaultSearch}) {
     });
     setData(resultFilter)
   }
-  
   const filterResult2 = (catItem) =>{
     const result2 = resultFilter.filter((curData)=>{
       return curData.parking === catItem;
@@ -46,6 +45,7 @@ function Search({ResaultSearch}) {
   const filterArr = data.filter(function (el) {
     return el.location == location
   })
+
   return (
     <div>
       <Header placeholder={`${location} | ${range} | ${quantityOfGuest} гостей`}/>
@@ -121,7 +121,7 @@ function Search({ResaultSearch}) {
           </div>
 
           <div className='flex flex-col'>
-          {filterArr.map(({img, location, title, map, passage, link, description, star, price, total}) =>(
+          {filterArr.map(({img, location, title, map, passage, link, star, price}) =>(
             <div className='flex py-7 px-2 border-b cursor-pointer 
             hover:opacity-80 hover:shadow-lg pr-4 duration-200
              ease-out first:border-t'>
@@ -136,7 +136,11 @@ function Search({ResaultSearch}) {
                     <div className='flex flex-col flex-grow pl-5'>
                         <div className='flex justify-between'>
                             <p>{location}</p>
+                            <div className='flex justify-center items-center'>
+                            <p className='mr-2 text-blue-500 font-semibold'>{star}</p>
                             <HeartIcon className='h-7 cursor-pointer'/>
+                            </div>
+                            
                         </div>
             
                         <h4 className='text-xl'>{title}</h4>
@@ -159,10 +163,8 @@ function Search({ResaultSearch}) {
           </div>
         </sectionc>
         <section className='hidden xl:inline-flex xl:min-w-[600px] h-[1000px] sticky top-[10%] left-[100%]'>
-          <Mapweb />
+          <Mapweb filterArr={filterArr} input={location}/>
         </section>
-        
-        <Modal active={modalActive} setActive={setModalActive}/>
       </main>
     </div>
   )
@@ -171,7 +173,7 @@ function Search({ResaultSearch}) {
 export default Search
 
 export async function getServerSideProps(){
-  const ResaultSearch = await fetch("https://api.jsonbin.io/b/626fa69838be296761fb0f99/14")
+  const ResaultSearch = await fetch("https://api.jsonbin.io/b/626fa69838be296761fb0f99/15")
   .then((res) => res.json());
   
   return{
